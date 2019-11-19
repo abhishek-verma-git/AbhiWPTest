@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="eighteenDP">18dp</dimen>
+    <dimen name="fifteenDP">15dp</dimen>
+    <dimen name="tenDP">10dp</dimen>
+    <dimen name="fiveDP">5dp</dimen>
+    <dimen name="fiftysixDP">56dp</dimen>
+</resources>
