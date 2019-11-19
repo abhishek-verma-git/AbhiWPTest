@@ -4,7 +4,9 @@ import com.abhi.wp.injection.module.NetworkModule
 import com.abhi.wp.ui.activityviewmodel.ActivityViewModel
 import dagger.Component
 import javax.inject.Singleton
-
+/**
+ * create component & add module
+ */
 @Singleton
 @Component(modules = [(NetworkModule::class)])
 interface ViewModelInjector {
