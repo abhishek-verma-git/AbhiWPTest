@@ -1,5 +1,6 @@
 package com.abhi.wp.ui.adapter
 
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,7 +11,7 @@ import com.abhi.wp.model.FeedDC
 import com.abhi.wp.ui.adapterviewmodel.FeedViewModel
 
 class FeedAdapter:RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
-    private lateinit var feedList:List<FeedDC.Feeddata>
+    private lateinit var feedList:MutableList<FeedDC.Feeddata>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -23,10 +24,19 @@ class FeedAdapter:RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
+        if(::feedList.isInitialized)
+        for(item in 0..feedList.size-1)
+        {
+            if(TextUtils.isEmpty(feedList[item].title) && TextUtils.isEmpty(feedList[item].description) && TextUtils.isEmpty(feedList[item].imageHref))
+            {
+                feedList.removeAt(item)
+                return feedList.size
+            }
+        }
         return if(::feedList.isInitialized)feedList.size else 0
     }
 
-    fun updateFeedList(feedList:List<FeedDC.Feeddata>)
+    fun updateFeedList(feedList:MutableList<FeedDC.Feeddata>)
     {
         this.feedList = feedList
         notifyDataSetChanged()

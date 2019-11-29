@@ -64,7 +64,7 @@ class ActivityViewModel(var context: MainActivity):BaseViewModel() {
     private fun onRetrievePostListSuccess(feedData:FeedDC){
         isLoading.set(false)
         title.set(feedData.title)
-        var feedlist:List<FeedDC.Feeddata> = feedData.rows
+        var feedlist:MutableList<FeedDC.Feeddata> = feedData.rows
         size = feedlist.size
         feedAdapter.updateFeedList(feedlist)
     }

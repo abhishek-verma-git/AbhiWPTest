@@ -18,7 +18,6 @@ class FeedViewModel:BaseViewModel() {
     private val feedTitle = MutableLiveData<String>()
     private val feedDescription = MutableLiveData<String>()
     private var feedImage= MutableLiveData<String>()
-    var feedNoData:MutableLiveData<Boolean> = MutableLiveData<Boolean>()
 
     fun bind(feed:FeedDC.Feeddata)
     {
@@ -38,7 +37,6 @@ class FeedViewModel:BaseViewModel() {
         }
         feedImage.value = feed.imageHref
 
-        feedNoData.value = !(TextUtils.isEmpty(feed.title) && TextUtils.isEmpty(feed.description) && TextUtils.isEmpty(feed.imageHref))
     }
 
     fun getFeedTitle():MutableLiveData<String>
