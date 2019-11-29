@@ -2,6 +2,8 @@ package com.abhi.wp.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.os.Build
+import android.util.Log
 
 class Helper {
 
@@ -9,8 +11,10 @@ class Helper {
     {
         fun isOnline(context: Context): Boolean {
             val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            val networkInfo = connectivityManager.activeNetworkInfo
-            return networkInfo != null && networkInfo.isConnected
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                return connectivityManager.getActiveNetwork() != null
+            }
+            return false
         }
     }
 }

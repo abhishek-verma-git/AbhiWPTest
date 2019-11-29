@@ -10,7 +10,7 @@ import com.abhi.wp.model.FeedDC
 import com.abhi.wp.ui.adapterviewmodel.FeedViewModel
 
 class FeedAdapter:RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
-    private lateinit var feedList:List<FeedDC.feeddata>
+    private lateinit var feedList:List<FeedDC.Feeddata>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -26,7 +26,7 @@ class FeedAdapter:RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
         return if(::feedList.isInitialized)feedList.size else 0
     }
 
-    fun updateFeedList(feedList:List<FeedDC.feeddata>)
+    fun updateFeedList(feedList:List<FeedDC.Feeddata>)
     {
         this.feedList = feedList
         notifyDataSetChanged()
@@ -34,7 +34,7 @@ class FeedAdapter:RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
     class ViewHolder(private val binding:FeedAdapterBinding):RecyclerView.ViewHolder(binding.root)
     {
         private val viewmodel = FeedViewModel()
-        fun bind(feed:FeedDC.feeddata)
+        fun bind(feed:FeedDC.Feeddata)
         {
             viewmodel.bind(feed)
             binding.feedViewModel = viewmodel

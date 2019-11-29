@@ -1,7 +1,9 @@
 package com.abhi.wp.ui.activity
 
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,5 +36,8 @@ class MainActivity : AppCompatActivity() {
             ActivityViewModelFactory(this)
         ).get(ActivityViewModel::class.java)
         activityMainBinding.activityViewModel = activityViewModel
+
+        var str:String = getString(R.string.app_name)
+        println(str)
     }
 }
