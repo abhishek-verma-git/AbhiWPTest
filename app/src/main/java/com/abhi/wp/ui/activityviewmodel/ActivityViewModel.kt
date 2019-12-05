@@ -25,7 +25,7 @@ class ActivityViewModel(var context: MainActivity):BaseViewModel() {
 
     val feedAdapter:FeedAdapter=FeedAdapter()
     private lateinit var subscription:Disposable
-    val loadingVisibility:ObservableInt= ObservableInt(GONE)
+    val loadingVisibility:ObservableInt= ObservableInt(VISIBLE)
     val errorMessage: ObservableField<String> = ObservableField()
     var title:ObservableField<String> = ObservableField()
     val isLoading:ObservableBoolean = ObservableBoolean(false)
@@ -53,7 +53,7 @@ class ActivityViewModel(var context: MainActivity):BaseViewModel() {
     }
 
     private fun onRetrievePostListStart(){
-        loadingVisibility.set(VISIBLE)
+//        loadingVisibility.set(VISIBLE)
     }
 
     private fun onRetrievePostListFinish(){
@@ -77,6 +77,7 @@ class ActivityViewModel(var context: MainActivity):BaseViewModel() {
 
     fun onRefresh()
     {
+        loadingVisibility.set(GONE)
         isLoading.set(true)
         loadData()
     }

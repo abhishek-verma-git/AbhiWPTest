@@ -10,13 +10,15 @@ import com.abhi.wp.databinding.FeedAdapterBinding
 import com.abhi.wp.model.FeedDC
 import com.abhi.wp.ui.adapterviewmodel.FeedViewModel
 
+
+
 class FeedAdapter:RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
     private lateinit var feedList:MutableList<FeedDC.Feeddata>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val feedBinding:FeedAdapterBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),
-            R.layout.feed_adapter,parent,false)
+            com.abhi.wp.R.layout.feed_adapter,parent,false)
         return ViewHolder(feedBinding)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -34,6 +36,10 @@ class FeedAdapter:RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
             }
         }
         return if(::feedList.isInitialized)feedList.size else 0
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 
     fun updateFeedList(feedList:MutableList<FeedDC.Feeddata>)

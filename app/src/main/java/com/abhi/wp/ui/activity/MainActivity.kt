@@ -36,8 +36,5 @@ class MainActivity : AppCompatActivity() {
             ActivityViewModelFactory(this)
         ).get(ActivityViewModel::class.java)
         activityMainBinding.activityViewModel = activityViewModel
-
-        var str:String = getString(R.string.app_name)
-        println(str)
     }
 }
